@@ -8,6 +8,7 @@ var db = require('./database/db');
 var swig = require('swig');
 var cons = require('consolidate');
 var routes = require('./routes/index');
+var cors = require('cors');
 
 
 var jsonParser = bodyParser.json({ limit: 1024 * 1024 * 20, type: 'application/json' }); // to avoid payload in node js for increasing size of payload
@@ -30,10 +31,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(cors({origin: 'http://localhost:4200'}));
 app.use('/', routes);
-
-
 
 app.all('/*', function (req, res, next) {
   // CORS headers
@@ -49,6 +48,7 @@ app.all('/*', function (req, res, next) {
     next();
   }
 });
+
 
 
 
