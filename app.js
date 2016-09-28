@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', routes);
 
 
@@ -61,7 +62,7 @@ process.argv.forEach(function (val, index, array) {
   }
 });
 
-var port = normalizePort(raw_port || '3000');
+var port = normalizePort(raw_port || '4000');
 app.set('port', port);
 
 
