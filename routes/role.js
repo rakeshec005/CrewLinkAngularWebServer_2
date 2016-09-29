@@ -25,9 +25,20 @@ var role = {
   },
 
   creteRole:function(req,res){
+     var roleObject = new roleModel({
+            roleCode: req.body.roleCode,
+        })
 
-    
-  }
+        roleObject.save(function (err) {
+            if (err) return err;
+            res.status(201);
+            return res.json({
+                "status": "200",
+                "success": true,
+                "message": "Role saved Successfully",
+            })
+        }) 
+   }
 
 
 }
